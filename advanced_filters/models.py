@@ -20,7 +20,9 @@ class AdvancedFilter(models.Model):
 
     title = models.CharField(max_length=255, null=False, blank=False, verbose_name=_('Title'))
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL,
-                                   related_name='created_advanced_filters', verbose_name=_('Created by'))
+                                   related_name='created_advanced_filters', verbose_name=_('Created by'),
+                                  on_delete=models.CASCADE,
+                                  )
     created_at = models.DateTimeField(auto_now_add=True, null=True, verbose_name=_('Created at'))
     url = models.CharField(max_length=255, null=False, blank=False, verbose_name=_('URL'))
     users = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, verbose_name=_('Users'))
